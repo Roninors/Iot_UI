@@ -1,5 +1,3 @@
-import { NavItemType } from "./SideBar";
-
 export const SideBarItems = ({
   itemLogo,
   itemName,

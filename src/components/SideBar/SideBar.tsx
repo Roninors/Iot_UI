@@ -14,7 +14,7 @@ export const SideBar = () => {
   const navItems: NavItemType[] = [
     {
       itemName: "Dashboard",
-      itemLogo: "/square.png",
+      itemLogo: "/dashboard.png",
       active: false,
     },
   ];
