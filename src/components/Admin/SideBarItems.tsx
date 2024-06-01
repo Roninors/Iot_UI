@@ -14,7 +14,7 @@ export const SideBarItems = ({
       className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md  cursor-pointer transition-colors ${
         active
           ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-          : "hover:bg-indigo-50 text-gray-600"
+          : "hover:bg-gray-950 text-white hover:text-blue-500"
       }`}
     >
       <img src={itemLogo} alt="item-logo" className="h-7 aspect-square" />

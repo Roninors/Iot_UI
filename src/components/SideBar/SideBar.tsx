@@ -13,7 +13,17 @@ export const SideBar = () => {
   const [isOpen, SetIsOpen] = useState(true);
   const navItems: NavItemType[] = [
     {
-      itemName: "Dashboard",
+      itemName: "Devices",
+      itemLogo: "/dashboard.png",
+      active: false,
+    },
+    {
+      itemName: "Locations",
+      itemLogo: "/dashboard.png",
+      active: false,
+    },
+    {
+      itemName: "Privacy Settings",
       itemLogo: "/dashboard.png",
       active: false,
     },

@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 
 function MainPage() {
   return (
-    <div className="w-screen h-screen flex  overflow-x-hidden">
+    <div className="w-screen h-screen flex">
       <SideBar />
       <main className="w-full h-full flex flex-col">
         <TopBar />
