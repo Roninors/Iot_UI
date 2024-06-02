@@ -15,7 +15,7 @@ export const SideBar = () => {
     {
       itemName: "Devices",
       itemLogo: "/dashboard.png",
-      active: false,
+      active: true,
     },
     {
       itemName: "Locations",

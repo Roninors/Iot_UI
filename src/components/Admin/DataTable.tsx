@@ -39,41 +39,47 @@ import {
 const data: Payment[] = [
   {
     id: "m5gr84i9",
-    amount: 316,
-    status: "success",
+    name: "Sean Lozana",
+    status: "Blocked",
     email: "ken99@yahoo.com",
+    location: "Bais City",
   },
   {
     id: "3u1reuv4",
-    amount: 242,
-    status: "success",
+    name: "Jann Louie",
+    status: "Online",
     email: "Abe45@gmail.com",
+    location: "Bais City",
   },
   {
     id: "derv1ws0",
-    amount: 837,
-    status: "processing",
+    name: "Christopher Moreno",
+    status: "Online",
     email: "Monserrat44@gmail.com",
+    location: "Tanjay City",
   },
   {
     id: "5kma53ae",
-    amount: 874,
-    status: "success",
+    name: "Fort Silva",
+    status: "Offline",
     email: "Silas22@gmail.com",
+    location: "Dumaguete City",
   },
   {
     id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
+    name: "Ronin Manso",
+    status: "Blocked",
     email: "carmella@hotmail.com",
+    location: "Bais City",
   },
 ];
 
 export type Payment = {
   id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
+  name: string;
+  status: "Online" | "Offline" | "Blocked" | "Paused";
   email: string;
+  location: string;
 };
 
 export const columns: ColumnDef<Payment>[] = [
@@ -100,11 +106,13 @@ export const columns: ColumnDef<Payment>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
-    ),
+    accessorKey: "name",
+    header: () => <div className="text-left">Subscriber</div>,
+    cell: ({ row }) => {
+      return (
+        <div className="text-left font-medium">{row.getValue("name")}</div>
+      );
+    },
   },
   {
     accessorKey: "email",
@@ -122,19 +130,32 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
+    accessorKey: "location",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Location
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
     },
+    cell: ({ row }) => <div>{row.getValue("location")}</div>,
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ row }) => (
+      <div
+        className={`capitalize ${
+          row.getValue("status") == "Online" ? "text-green-400" : "text-red-500"
+        }`}
+      >
+        {row.getValue("status")}
+      </div>
+    ),
   },
   {
     id: "actions",
@@ -155,11 +176,8 @@ export const columns: ColumnDef<Payment>[] = [
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-              Copy payment ID
+              Copy user ID
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

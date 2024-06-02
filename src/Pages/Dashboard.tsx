@@ -5,6 +5,7 @@ import routerLogo from "/wifi-router.png";
 import manufacLogo from "/logoipsum-297.svg";
 import signal from "/signal.png";
 import AccordionDevice from "@/components/Dashboard/AccordionDevice";
+import { Button } from "@/components/ui/button";
 type DeviceType = {
   deviceName: string;
   deviceLogo: string;
@@ -42,7 +43,7 @@ function Dashboard() {
         <div className=" flex gap-6 mb-8">
           <h1 className="text-3xl">Devices</h1>
           <button className="px-[1rem] py-[.5rem] bg-blue-500 text-white text-sm rounded-sm">
-            + Add Device
+            + Add Device Type
           </button>
         </div>
         <div className="flex gap-5">
@@ -62,11 +63,16 @@ function Dashboard() {
             </ul>
           </div>
           <div className="flex flex-col bg-white rounded-sm shadow-sm p-5">
-            <div className="flex flex-col border-b pb-10">
+            <div className="flex flex-col border-b pb-4">
               <p className="text-sm mb-3">FILTER BY</p>
-              <div className="flex gap-5">
-                <ComboBoxLocation />
-                <ComboBoxManufacturer />
+              <div className="flex flex-col gap-3">
+                <div className="flex gap-5">
+                  <ComboBoxLocation />
+                  <ComboBoxManufacturer />
+                </div>
+                <Button className="w-fit bg-blue-500 text-white">
+                  Add Device
+                </Button>
               </div>
             </div>
             <div className="flex flex-col pt-5">

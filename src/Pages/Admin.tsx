@@ -1,9 +1,16 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { DataTable } from "@/components/Admin/DataTable";
 import { SideBar } from "@/components/Admin/SideBar";
 import { TopBar } from "@/components/Admin/TopBar";
 import profileTemplate from "/subscriber-profile.png";
 import { SubscriberInfo } from "@/components/Admin/SubscriberInfo";
 import AccordionDevice from "@/components/Dashboard/AccordionDevice";
+import { Button } from "@/components/ui/button";
 function Admin() {
   return (
     <div className="w-screen h-screen flex bg-gray-300">
@@ -50,10 +57,41 @@ function Admin() {
             </div>
 
             <div className="mt-6">
-              <AccordionDevice
-                accordionText="lorem ipsum"
-                accordionTriggerText="Roles"
-              />
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>Roles</AccordionTrigger>
+                  <AccordionContent>
+                    <div className="flex flex-col gap-4">
+                      <div>
+                        <Button className="bg-green-400 text-white">
+                          Add Role
+                        </Button>
+                      </div>
+                      <div className="flex flex-col">
+                        <p className="text-lg">Roles:</p>
+                        <p className="bg-gray-300 w-fit px-2 py-1 rounded-md text-black">
+                          Subscriber/User
+                        </p>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+
+              <Accordion type="single" collapsible>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>Admin Actions</AccordionTrigger>
+                  <AccordionContent>
+                    <div className="flex gap-4">
+                      <Button className="bg-red-400 text-white">Block</Button>
+                      <Button className="bg-red-400 text-white">Delete</Button>
+                      <Button className="bg-green-400 text-white">
+                        Unblock
+                      </Button>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </section>
         </div>
