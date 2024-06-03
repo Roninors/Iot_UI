@@ -1,3 +1,5 @@
+import { Button } from "../ui/button";
+
 export const TopBar = () => {
   return (
     <nav className="w-full flex justify-end border-b shadow-sm p-4">
@@ -7,9 +9,7 @@ export const TopBar = () => {
           placeholder="search device..."
           className="border shadow-sm px-4 py-1.5 rounded-sm"
         />
-        <button className=" px-[1rem] py-[.5rem] bg-blue-500 rounded-md text-white">
-          Search
-        </button>
+        <Button className="bg-blue-500 text-white">Search</Button>
       </div>
     </nav>
   );

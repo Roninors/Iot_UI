@@ -2,8 +2,8 @@ import { useState } from "react";
 import sideBarLogo from "/logoipsum-297.svg";
 import openLogo from "/next.png";
 import closeLogo from "/next-reverse.png";
-import userLogo from "/square.png";
 import { SideBarItems } from "./SideBarItems";
+import { AccountPopOver } from "./AccountPopOver";
 export type NavItemType = {
   itemName: string;
   itemLogo: string;
@@ -62,7 +62,7 @@ export const SideBar = () => {
           ))}
         </ul>
         <div className="flex border-t p-3">
-          <img src={userLogo} alt="" className="h-16 aspect-square" />
+          <AccountPopOver />
           <div
             className={`flex justify-between items-center overflow-hidden transition-all  ${
               isOpen ? "w-52 ml-3" : "w-0"

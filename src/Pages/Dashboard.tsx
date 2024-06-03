@@ -1,16 +1,27 @@
 import { ComboBoxLocation } from "@/components/Dashboard/ComboBoxLocation";
 import { ComboBoxManufacturer } from "@/components/Dashboard/ComboBoxManufacturer";
-import { DeviceCard } from "@/components/Dashboard/DeviceCard";
 import routerLogo from "/wifi-router.png";
 import manufacLogo from "/logoipsum-297.svg";
 import signal from "/signal.png";
 import AccordionDevice from "@/components/Dashboard/AccordionDevice";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { DeviceTypeDialog } from "@/components/Dashboard/DeviceTypeDialog";
+import { DeviceCard } from "@/components/Dashboard/DeviceCard";
+import { AddDeviceDialog } from "@/components/Dashboard/AddDeviceDialog";
+import { SwitchOnline } from "@/components/Dashboard/SwitchOnline";
+import { useState } from "react";
 type DeviceType = {
   deviceName: string;
   deviceLogo: string;
 };
 function Dashboard() {
+  const [online, setOnline] = useState(true);
   const deviceType: DeviceType[] = [
     {
       deviceName: "All Devices",
@@ -42,9 +53,7 @@ function Dashboard() {
       <div className="w-fit flex flex-col p-5">
         <div className=" flex gap-6 mb-8">
           <h1 className="text-3xl">Devices</h1>
-          <button className="px-[1rem] py-[.5rem] bg-blue-500 text-white text-sm rounded-sm">
-            + Add Device Type
-          </button>
+          <DeviceTypeDialog />
         </div>
         <div className="flex gap-5">
           <div className="w-fit  overflow-y-scroll h-[76vh] shadow-sm p-5 flex flex-col bg-white rounded-sm">
@@ -70,9 +79,7 @@ function Dashboard() {
                   <ComboBoxLocation />
                   <ComboBoxManufacturer />
                 </div>
-                <Button className="w-fit bg-blue-500 text-white">
-                  Add Device
-                </Button>
+                <AddDeviceDialog />
               </div>
             </div>
             <div className="flex flex-col pt-5">
@@ -88,7 +95,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="flex-1 items-center flex-col  bg-white p-10">
+      <div className="flex-1 items-center flex-col  bg-white p-10 max-h-[92.5vh] overflow-y-scroll">
         <div className="flex justify-center  items-center gap-8 ">
           <div>
             <img
@@ -107,10 +114,14 @@ function Dashboard() {
           <div className="mt-8 grid grid-rows-2 grid-cols-2  w-fit">
             <div className=" h-32 border-b border-gray-100 border-r flex  justify-center items-center flex-col">
               <p>Status</p>
-              <p className=" text-green-400 text-sm mb-2">Online</p>
-              <p className="bg-red-200 text-red-500 px-3 py-[.8px] rounded-md w-fit cursor-pointer">
-                Switch Off
+              <p
+                className={` ${
+                  online ? "text-green-400" : "text-red-400"
+                } text-sm mb-2`}
+              >
+                {online ? "Online" : "Offline"}
               </p>
+              <SwitchOnline setOnline={setOnline} online={online} />
             </div>
             <div className="h-32 border-b border-gray-100 flex items-center justify-center">
               <img
@@ -136,21 +147,47 @@ function Dashboard() {
         </div>
         <div className="mt-6">
           <AccordionDevice
-            accordionText="lorem ipsum"
+            accordionText="Our IoT-enabled router offers seamless network management and monitoring through a user-friendly web interface. 
+            With real-time control over network settings, device connectivity, and security features, you can effortlessly optimize your home or office network. 
+            Experience enhanced performanceand convenience with our smart router solution, designed to keep you connected and in control."
             accordionTriggerText="About Device"
           />
-          <AccordionDevice
-            accordionTriggerText="IOT usecases"
-            accordionText="lorem ipsum"
-          />
-          <AccordionDevice
-            accordionTriggerText="Security"
-            accordionText="lorem ipsum"
-          />
-          <AccordionDevice
-            accordionTriggerText="Safety Features"
-            accordionText="lorem ipsum"
-          />
+
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>Smart Features</AccordionTrigger>
+              <AccordionContent>
+                <div className="flex flex-wrap gap-2">
+                  <Button className="bg-green-300 text-white">
+                    Energy Saving Mode
+                  </Button>
+                  <Button className="bg-gray-300 text-white">
+                    Emergency Power Backup
+                  </Button>
+                  <Button className="bg-gray-300 text-white">
+                    Bandwidth Stabilizer
+                  </Button>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>Safety And Security Features</AccordionTrigger>
+              <AccordionContent>
+                <div className="flex flex-wrap gap-2">
+                  <Button className="bg-green-300 text-white">AI Shield</Button>
+                  <Button className="bg-green-300 text-white">
+                    Temperature Observer
+                  </Button>
+                  <Button className="bg-gray-300 text-white">
+                    Electric Surge Preventor
+                  </Button>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </div>
     </main>

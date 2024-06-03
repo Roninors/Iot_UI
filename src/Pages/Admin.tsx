@@ -9,17 +9,16 @@ import { SideBar } from "@/components/Admin/SideBar";
 import { TopBar } from "@/components/Admin/TopBar";
 import profileTemplate from "/subscriber-profile.png";
 import { SubscriberInfo } from "@/components/Admin/SubscriberInfo";
-import AccordionDevice from "@/components/Dashboard/AccordionDevice";
 import { Button } from "@/components/ui/button";
 function Admin() {
   return (
-    <div className="w-screen h-screen flex bg-gray-300">
+    <div className="w-screen h-screen overflow-x-hidden flex bg-gray-300">
       <SideBar />
       <main className="w-full h-full flex flex-col ">
         <TopBar />
         <div className="w-full h-full flex p-5 gap-5">
           <DataTable />
-          <section className="h-full flex-1 flex-col p-5 bg-white rounded-md">
+          <section className="h-full flex-1 flex-col p-5 bg-white rounded-md max-h-[85vh] overflow-y-scroll">
             <div className="border-b border-gray-100">
               <p className="pb-3 text-lg">Subscriber's Information</p>
             </div>
