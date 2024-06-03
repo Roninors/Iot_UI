@@ -3,10 +3,13 @@ import openLogo from "/next.png";
 import closeLogo from "/next-reverse.png";
 import userLogo from "/square.png";
 import { SideBarItems } from "./SideBarItems";
+import { StringToBoolean } from "class-variance-authority/types";
+import { AccountPopOver } from "../SideBar/AccountPopOver";
 export type NavItemType = {
   itemName: string;
   itemLogo: string;
   active: boolean;
+  link?: string;
 };
 export const SideBar = () => {
   const [isOpen, SetIsOpen] = useState(true);
@@ -14,12 +17,14 @@ export const SideBar = () => {
     {
       itemName: "Subscribers",
       itemLogo: "/subscribers.png",
-      active: true,
+      active: false,
+      link: "/admin",
     },
     {
-      itemName: "Roles",
+      itemName: "Connection Requests",
       itemLogo: "/management.png",
       active: false,
+      link: "/admin/requests",
     },
     {
       itemName: "Household",
@@ -62,11 +67,12 @@ export const SideBar = () => {
               itemLogo={navItems.itemLogo}
               itemName={navItems.itemName}
               active={navItems.active}
+              link={navItems.link ? navItems.link : ""}
             />
           ))}
         </ul>
         <div className="flex border-t p-3 border-blue-500">
-          <img src={userLogo} alt="" className="h-16 aspect-square" />
+          <AccountPopOver />
           <div
             className={`flex justify-between items-center overflow-hidden transition-all  ${
               isOpen ? "w-52 ml-3" : "w-0"

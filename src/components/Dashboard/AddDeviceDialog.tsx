@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ComboBoxManufacturer } from "./ComboBoxManufacturer";
+import { ComboBoxLocation } from "./ComboBoxLocation";
 
 export function AddDeviceDialog() {
   return (
@@ -42,6 +43,12 @@ export function AddDeviceDialog() {
               Device Manufacturer
             </Label>
             <ComboBoxManufacturer />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="username" className="text-right">
+              Location
+            </Label>
+            <ComboBoxLocation />
           </div>
         </div>
         <DialogFooter>

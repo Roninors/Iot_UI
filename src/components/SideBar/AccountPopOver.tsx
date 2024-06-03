@@ -1,14 +1,14 @@
 import userLogo from "/square.png";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "../ui/button";
+import { useNavigate } from "react-router";
 
 export function AccountPopOver() {
+  const nav = useNavigate();
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -27,7 +27,12 @@ export function AccountPopOver() {
           <Button className="bg-blue-500 text-white w-fit">
             Create Profile
           </Button>
-          <Button className="bg-red-400 text-white w-fit">Logout</Button>
+          <Button
+            className="bg-red-400 text-white w-fit"
+            onClick={() => nav("/")}
+          >
+            Logout
+          </Button>
         </div>
       </PopoverContent>
     </Popover>

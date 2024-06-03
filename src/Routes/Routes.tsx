@@ -1,13 +1,16 @@
 import App from "@/App";
 import Admin from "@/Pages/Admin";
+import Authentication from "@/Pages/Authentication";
 import Dashboard from "@/Pages/Dashboard";
 import MainPage from "@/Pages/MainPage";
+import Requests from "@/Pages/Requests";
+import Subscribers from "@/Pages/Subscribers";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Authentication />,
     children: [],
   },
   {
@@ -18,6 +21,9 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
-    children: [],
+    children: [
+      { path: "requests", element: <Requests /> },
+      { path: "", element: <Subscribers /> },
+    ],
   },
 ]);
