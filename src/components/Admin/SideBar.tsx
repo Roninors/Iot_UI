@@ -1,9 +1,7 @@
 import { useState } from "react";
 import openLogo from "/next.png";
 import closeLogo from "/next-reverse.png";
-import userLogo from "/square.png";
 import { SideBarItems } from "./SideBarItems";
-import { StringToBoolean } from "class-variance-authority/types";
 import { AccountPopOver } from "../SideBar/AccountPopOver";
 export type NavItemType = {
   itemName: string;

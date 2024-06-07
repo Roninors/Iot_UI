@@ -1,4 +1,3 @@
-import App from "@/App";
 import Admin from "@/Pages/Admin";
 import Authentication from "@/Pages/Authentication";
 import Dashboard from "@/Pages/Dashboard";

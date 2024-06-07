@@ -1,6 +1,5 @@
 import upTrend from "/increase.png";
 import downTrend from "/decrease.png";
-import { StringToBoolean } from "class-variance-authority/types";
 type SummaryType = {
   summaryHeader: string;
   summaryValue: number;

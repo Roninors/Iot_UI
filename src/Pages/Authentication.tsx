@@ -4,7 +4,6 @@ import iotPic from "/internet-of-things.png";
 import facebookLogo from "/facebook.png";
 import googleLogo from "/google.png";
 import { Input } from "@/components/ui/input";
-import { CheckboxRemember } from "@/components/Authentication/CheckBoxRemember";
 import { useState } from "react";
 import { AuthForm } from "@/components/Authentication/AuthForm";
 function Authentication() {
