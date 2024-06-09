@@ -13,10 +13,12 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { CheckboxRemember } from "./CheckBoxRemember";
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 const formSchema = z.object({
   username: z.string().min(1),
   password: z.string().min(1),
+  confirmPass: z.string().min(1),
 });
 
 export const AuthForm = ({ changePage }: { changePage: boolean }) => {
@@ -26,8 +28,10 @@ export const AuthForm = ({ changePage }: { changePage: boolean }) => {
     defaultValues: {
       username: "",
       password: "",
+      confirmPass: "",
     },
   });
+  const { reset } = form;
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     if (values.username == "admin" && values.password == "admin") {
@@ -36,6 +40,9 @@ export const AuthForm = ({ changePage }: { changePage: boolean }) => {
       nav("/main");
     }
   }
+  useEffect(() => {
+    reset();
+  }, [changePage]);
   return (
     <>
       <Form {...form}>
@@ -67,7 +74,7 @@ export const AuthForm = ({ changePage }: { changePage: boolean }) => {
           {changePage && (
             <FormField
               control={form.control}
-              name="password"
+              name="confirmPass"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
