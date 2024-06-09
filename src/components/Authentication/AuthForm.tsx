@@ -58,12 +58,30 @@ export const AuthForm = ({ changePage }: { changePage: boolean }) => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder="Password" {...field} />
+                  <Input placeholder="Password" type="password" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+          {changePage && (
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      placeholder="Confirm Password"
+                      type="password"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
           <div className="w-full flex items-center justify-between">
             <div className="flex gap-3">
               <CheckboxRemember />
