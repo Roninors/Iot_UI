@@ -18,7 +18,7 @@ import { useEffect } from "react";
 const formSchema = z.object({
   username: z.string().min(1),
   password: z.string().min(1),
-  confirmPass: z.string().min(1),
+  confirmPass: z.string(),
 });
 
 export const AuthForm = ({ changePage }: { changePage: boolean }) => {
@@ -35,8 +35,10 @@ export const AuthForm = ({ changePage }: { changePage: boolean }) => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     if (values.username == "admin" && values.password == "admin") {
+      reset();
       nav("/admin");
     } else {
+      reset();
       nav("/main");
     }
   }
